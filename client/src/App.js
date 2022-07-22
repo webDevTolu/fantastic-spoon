@@ -1,3 +1,22 @@
+import React, { Suspense } from "react";
+import Layout from "./components/ui/Layout";
+import Loading from "./components/ui/Loading";
+// import HomePage from "./pages/HomePage";
+
+const HomePage = React.lazy(() => import("./pages/HomePage"));
+
 export default function App() {
-  return <h1 className="text-3xl font-bold underline">Hello world!</h1>;
+  return (
+    <Layout>
+      <Suspense
+        fallback={
+          <div>
+            <Loading />
+          </div>
+        }
+      >
+        <HomePage />
+      </Suspense>
+    </Layout>
+  );
 }
