@@ -1,7 +1,6 @@
 import React, { Suspense } from "react";
 import Layout from "./components/ui/Layout";
 import Loading from "./components/ui/Loading";
-// import HomePage from "./pages/HomePage";
 
 const HomePage = React.lazy(() => import("./pages/HomePage"));
 
