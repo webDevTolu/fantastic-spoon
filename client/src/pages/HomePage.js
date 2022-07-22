@@ -1,9 +1,7 @@
-
+import Clients from "../components/Clients";
 
 const HomePage = () => {
-  return (
-    <div>HomePage</div>
-  )
-}
+  return <Clients />;
+};
 
-export default HomePage
+export default HomePage;

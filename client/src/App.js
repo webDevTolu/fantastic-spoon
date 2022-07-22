@@ -6,16 +6,16 @@ const HomePage = React.lazy(() => import("./pages/HomePage"));
 
 export default function App() {
   return (
-    <Layout>
-      <Suspense
-        fallback={
-          <div>
-            <Loading />
-          </div>
-        }
-      >
+    <Suspense
+      fallback={
+        <div>
+          <Loading />
+        </div>
+      }
+    >
+      <Layout>
         <HomePage />
-      </Suspense>
-    </Layout>
+      </Layout>
+    </Suspense>
   );
 }
