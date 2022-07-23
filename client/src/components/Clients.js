@@ -5,17 +5,10 @@ import { gql, useQuery } from "@apollo/client";
 import Loading from "./ui/Loading";
 import ErrorNotification from "./ui/ErrorNotification";
 import { Fragment } from "react";
+import ClientRow from "./ClientRow";
+import { GET_CLIENTS } from "../queries/clientQueries";
 
-const GET_CLIENTS = gql`
-  {
-    allClients {
-      id
-      name
-      email
-      phone
-    }
-  }
-`;
+
 
 const Clients = () => {
   const { loading, error, data } = useQuery(GET_CLIENTS);
@@ -23,7 +16,27 @@ const Clients = () => {
   if (loading) return <Loading />;
   if (error) return <ErrorNotification />;
 
-  return <Fragment>{!loading && !error && <h1>Clients</h1>}</Fragment>;
+  return (
+    <Fragment>
+      {!loading && !error && (
+        <table>
+          <thead>
+            <tr>
+              <th>name</th>
+              <th>email</th>
+              <th>phone</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.allClients.map((client) => (
+              <ClientRow key={client.id} client={client} />
+            ))}
+          </tbody>
+        </table>
+      )}
+    </Fragment>
+  );
 };
 
 export default Clients;
