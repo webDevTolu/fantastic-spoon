@@ -41,10 +41,23 @@ const ProjectDetail = () => {
               {data.singleProject.description}
             </p>
             <div className="flex justify-between items-center mt-1">
-              <span className="text-xs font-medium font-rubik text-stone-400 italic">
+              <span
+                className={`text-xs font-medium font-rubik italic ${
+                  data.singleProject.status === "Not Started"
+                    ? "text-red-400"
+                    : data.singleProject.status === "In Progress"
+                    ? "text-amber-400"
+                    : data.singleProject.status === "Completed"
+                    ? "text-green-400"
+                    : ""
+                }`}
+              >
                 {data.singleProject.status}
               </span>
-              <p onClick={() => setShow(!show)} className="text-sm text-stone-700 hover:text-stone-800 font-normal ">
+              <p
+                onClick={() => setShow(!show)}
+                className="text-sm text-stone-700 hover:text-stone-800 font-normal "
+              >
                 {!show ? "View CLient" : "Hide"}
               </p>
             </div>

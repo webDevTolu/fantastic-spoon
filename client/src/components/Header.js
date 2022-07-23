@@ -9,8 +9,9 @@ const Header = () => {
         <h1>Learn graphql</h1>
       </Link>
 
-      <div>
+      <div className="flex gap-x-3 items-center">
         <Link to="/add-client">Add Client</Link>
+        <Link to="/add-project">Add Project</Link>
       </div>
     </nav>
   );
