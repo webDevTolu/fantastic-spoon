@@ -1,5 +1,5 @@
 const ErrorNotification = () => {
-  return <div>ErrorNotification</div>;
+  return <div>Something went wrong! Please try again.</div>;
 };
 
 export default ErrorNotification;
