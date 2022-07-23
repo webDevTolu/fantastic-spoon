@@ -18,7 +18,7 @@ const Projects = () => {
   return (
     <Fragment>
       {!loading && !error && (
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-6 lg:grid-cols-4">
+        <div className="w-full p-4 grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 lg:grid-cols-4">
           {data.allProjects.map((project) => (
             <ProjectCard key={project.id} project={project} />
           ))}
