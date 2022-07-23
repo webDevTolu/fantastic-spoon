@@ -1,10 +1,16 @@
+import { useMutation } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { ADD_CLIENT } from "../mutations/clientMutations";
+import { GET_CLIENTS } from "../queries/clientQueries";
 
 const AddClientForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [disable, setDisable] = useState(true);
+
+  const navigate = useNavigate();
 
   // simple form validation
   // not perfect for email validation tho
@@ -22,17 +28,31 @@ const AddClientForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    const data = {
-      name,
-      email,
-      phone,
-    };
-    console.log(data);
+    // sends data to server
+    addClient(name, email, phone);
     // clears form after submission
     setName("");
     setEmail("");
     setPhone("");
+
+    // navigates to home page after submission
+    navigate('/')
   };
+
+  const [addClient] = useMutation(ADD_CLIENT, {
+    variables: {
+      name,
+      email,
+      phone,
+    },
+    update(cache, { data: { addClient } }) {
+      const { allClients } = cache.readQuery({ query: GET_CLIENTS });
+      cache.writeQuery({
+        query: GET_CLIENTS,
+        data: { allClients: [...allClients, addClient] }, // adds new client to the rests of the clients list
+      });
+    },
+  });
 
   return (
     <form
@@ -78,7 +98,7 @@ const AddClientForm = () => {
           className="bg-blue-800 hover:bg-blue-900 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold capitalize text-lg flex items-center justify-center h-12 w-full"
           disabled={disable}
         >
-          submit
+          add client
         </button>
       </div>
     </form>
