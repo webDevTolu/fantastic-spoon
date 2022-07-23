@@ -1,7 +1,14 @@
+import { Fragment } from "react";
 import Clients from "../components/Clients";
+import Projects from "../components/Projects";
 
 const HomePage = () => {
-  return <Clients />;
+  return (
+    <div className="flex flex-col gay-y-8 justify-center">
+      <Projects />
+      <Clients />
+    </div>
+  );
 };
 
 export default HomePage;
