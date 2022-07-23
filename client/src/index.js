@@ -6,9 +6,29 @@ import { BrowserRouter } from "react-router-dom";
 import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client";
 
 // apollo
+// fix for method2 implementation of mutation events
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        allClients: {
+          merge(existing, incoming) {
+            return incoming;
+          },
+        },
+        allProjects: {
+          merge(existing, incoming) {
+            return incoming;
+          },
+        },
+      },
+    },
+  },
+});
+
 const client = new ApolloClient({
-  uri: "https://learning-graphql-api.herokuapp.com/api",
-  cache: new InMemoryCache(),
+  uri: "https://learning-graphql-api.herokuapp.com/api/",
+  cache,
 });
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

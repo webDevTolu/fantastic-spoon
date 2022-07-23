@@ -6,13 +6,7 @@ const HomePage = React.lazy(() => import("./pages/HomePage"));
 
 export default function App() {
   return (
-    <Suspense
-      fallback={
-        <div>
-          <Loading />
-        </div>
-      }
-    >
+    <Suspense fallback={<Loading />}>
       <Layout>
         <HomePage />
       </Layout>
