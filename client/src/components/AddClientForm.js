@@ -1,9 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const AddClientForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [disable, setDisable] = useState(true);
+
+  // simple form validation
+  // not perfect for email validation tho
+  useEffect(() => {
+    if (
+      name.trim().length > 0 &&
+      phone.trim().length > 6 &&
+      email.trim().length > 0
+    ) {
+      setDisable(false);
+    } else {
+      setDisable(true);
+    }
+  }, [name, phone, email]);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -13,6 +28,10 @@ const AddClientForm = () => {
       phone,
     };
     console.log(data);
+    // clears form after submission
+    setName("");
+    setEmail("");
+    setPhone("");
   };
 
   return (
@@ -53,10 +72,11 @@ const AddClientForm = () => {
         />
       </div>
 
-      <div>
+      <div className="flex w-full">
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="bg-blue-800 hover:bg-blue-900 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold capitalize text-lg flex items-center justify-center h-12 w-full"
+          disabled={disable}
         >
           submit
         </button>
