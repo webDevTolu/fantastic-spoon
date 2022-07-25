@@ -1,5 +1,6 @@
 import { useMutation, useQuery } from "@apollo/client";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { ADD_PROJECT } from "../mutations/projectMutation";
 import { GET_CLIENTS } from "../queries/clientQueries";
 import { GET_PROJECTS } from "../queries/projectQueries";
@@ -7,46 +8,53 @@ import ErrorNotification from "./ui/ErrorNotification";
 import Loading from "./ui/Loading";
 
 const AddProjectForm = () => {
+  const navigate = useNavigate();
+
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [clientID, setClientID] = useState("");
-  const [status, setStatus] = useState("Not Started");
+  const [clientId, setClientId] = useState("");
+  const [status, setStatus] = useState("NEW");
   const [disable, setDisable] = useState(true);
-
-  // fetches client for clientID in the form
-  const { loading, error, data } = useQuery(GET_CLIENTS);
 
   // add project mutation
   const [addProject] = useMutation(ADD_PROJECT, {
-    variables: {
-      name,
-      description,
-      status,
-      clientID,
-    },
+    variables: { name, description, clientId, status },
     update(cache, { data: { addProject } }) {
       const { allProjects } = cache.readQuery({ query: GET_PROJECTS });
       cache.writeQuery({
         query: GET_PROJECTS,
-        data: { allClients: [...allProjects, addProject] }, // adds new client to the rests of the clients list
+        data: { allProjects: [...allProjects, addProject] },
       });
     },
   });
 
+  // fetches client for clientID in the form
+  const { loading, error, data } = useQuery(GET_CLIENTS);
+
   // simple form validation
   useEffect(() => {
-    if (name !== "" && description !== "" && clientID !== "" && status !== "") {
+    if (name !== "" && description !== "" && clientId !== "" && status !== "") {
       setDisable(false);
     } else {
       setDisable(true);
     }
-  }, [name, description, clientID, status]);
+  }, [name, description, clientId, status]);
 
   const submitHandler = (event) => {
     event.preventDefault();
 
     // sends data to server
-    addProject(name, description, clientID, status)
+    console.log({ name, description, clientId, status });
+    addProject(name, description, clientId, status);
+
+    // clear form after submit
+    setName("");
+    setDescription("");
+    setClientId("");
+    setStatus("Not Started");
+
+    // redirect to homepage after submission
+    navigate("/");
   };
 
   if (loading) return <Loading />;
@@ -74,9 +82,10 @@ const AddProjectForm = () => {
           <select
             name="clientID"
             id="clientID"
-            value={clientID}
-            onChange={(event) => setClientID(event.target.value)}
+            value={clientId}
+            onChange={(event) => setClientId(event.target.value)}
           >
+            <option value="">Select Client</option>
             {/* maps all the clients and return the id when selected */}
             {data.allClients.map((client) => (
               <option key={client.id} value={client.id}>

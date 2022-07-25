@@ -56,7 +56,7 @@ const ProjectDetail = () => {
               </span>
               <p
                 onClick={() => setShow(!show)}
-                className="text-sm text-stone-700 hover:text-stone-800 font-normal "
+                className="text-sm text-stone-700 hover:text-stone-800 font-normal cursor-pointer"
               >
                 {!show ? "View CLient" : "Hide"}
               </p>
