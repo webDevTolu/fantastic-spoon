@@ -2,6 +2,7 @@ import { useQuery } from "@apollo/client";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ClientDetails from "../components/ClientDetails";
+import DeleteProjectBtn from "../components/DeleteProjectBtn";
 import ErrorNotification from "../components/ui/ErrorNotification";
 import Loading from "../components/ui/Loading";
 import { GET_PROJECT } from "../queries/projectQueries";
@@ -63,6 +64,9 @@ const ProjectDetail = () => {
             </div>
           </div>
           {show && <ClientDetails client={data.singleProject.client} />}
+          <div className="flex justify-end p-1">
+            <DeleteProjectBtn projectId={id} />
+          </div>
         </div>
       )}
     </div>
