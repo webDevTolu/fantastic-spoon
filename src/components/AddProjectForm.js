@@ -65,7 +65,7 @@ const AddProjectForm = () => {
       className="w-5/6 max-w-md mx-auto flex flex-col gap-y-6 items-center font-rubik justify-center p-4 border rounded-md shadow-lg"
     >
       <div className="flex flex-col gap-y-2 w-full">
-        <label className="capitalize text-lg text-slate-800" htmlFor="name">name</label>
+        <label className="capitalize text-base text-slate-800" htmlFor="name">name</label>
         <input
           type="text"
           name="name"
@@ -76,7 +76,7 @@ const AddProjectForm = () => {
       </div>
 
       <div className="flex flex-col gap-y-2 w-full">
-        <label className="capitalize text-lg text-slate-800" htmlFor="clientID">clientID</label>
+        <label className="capitalize text-base text-slate-800" htmlFor="clientID">clientID</label>
         {!loading && !error && (
           <select
             name="clientID"
@@ -96,7 +96,7 @@ const AddProjectForm = () => {
       </div>
 
       <div className="flex flex-col gap-y-2 w-full">
-        <label className="capitalize text-lg text-slate-800" htmlFor="status">status</label>
+        <label className="capitalize text-base text-slate-800" htmlFor="status">status</label>
         <select
           name="status"
           id="status"
@@ -110,7 +110,7 @@ const AddProjectForm = () => {
       </div>
 
       <div className="flex flex-col gap-y-2 w-full">
-        <label className="capitalize text-lg text-slate-800" htmlFor="description">description</label>
+        <label className="capitalize text-base text-slate-800" htmlFor="description">description</label>
         <textarea
           id="description"
           name="description"

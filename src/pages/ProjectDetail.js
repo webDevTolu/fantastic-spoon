@@ -33,7 +33,7 @@ const ProjectDetail = () => {
 
       {!loading && !error && (
         <div className="w-5/6 max-w-md mx-auto my-4 border shadow-md p-3 grid grid-cols-1 gap-y-2 divide-y divide-gray-200 rounded-md">
-          <div className="flex flex-col gay-y-2">
+          <div className="flex flex-col gap-y-3">
             <h2 className="text-2xl font-bold font-rubik text-stone-800">
               {data.singleProject.name}
             </h2>

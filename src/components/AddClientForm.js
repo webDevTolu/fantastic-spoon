@@ -60,7 +60,7 @@ const AddClientForm = () => {
       className="w-5/6 max-w-md mx-auto flex flex-col gap-y-6 items-center justify-center p-4 border rounded-md shadow-lg"
     >
       <div className="flex flex-col gap-y-2 w-full">
-        <label className="capitalize text-lg text-slate-800" htmlFor="name">name</label>
+        <label className="capitalize text-base text-slate-800" htmlFor="name">name</label>
         <input
           type="text"
           name="name"
@@ -71,7 +71,7 @@ const AddClientForm = () => {
       </div>
 
       <div className="flex flex-col gap-y-2 w-full">
-        <label className="capitalize text-lg text-slate-800" htmlFor="email">email</label>
+        <label className="capitalize text-base text-slate-800" htmlFor="email">email</label>
         <input
           type="email"
           name="email"
@@ -82,7 +82,7 @@ const AddClientForm = () => {
       </div>
 
       <div className="flex flex-col gap-y-2 w-full">
-        <label className="capitalize text-lg text-slate-800" htmlFor="phone">phone</label>
+        <label className="capitalize text-base text-slate-800" htmlFor="phone">phone</label>
         <input
           type="text"
           name="phone"
