@@ -16,23 +16,12 @@ const Clients = () => {
 
   return (
     <Fragment>
-      {!loading && !error && (
-        <table>
-          <thead>
-            <tr>
-              <th>name</th>
-              <th>email</th>
-              <th>phone</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.allClients.map((client) => (
-              <ClientRow key={client.id} client={client} />
-            ))}
-          </tbody>
-        </table>
-      )}
+      <h2 className="text-xl text-slate-900 font-bold font-rubik">Clients</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-0 rounded-md shadow-sm overflow-hidden">
+        {!loading && !error && data.allClients.map((client) => (
+          <ClientRow key={client.id} client={client} />
+        ))}
+      </div>
     </Fragment>
   );
 };
