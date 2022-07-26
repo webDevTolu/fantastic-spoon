@@ -27,12 +27,12 @@ const ProjectDetail = () => {
   if (error) return <ErrorNotification />;
 
   return (
-    <div>
+    <div className="w-full p-2 flex flex-col gap-y-4 font-rubik">
       <BackBtn />
-      <h1>Project Detail</h1>
+      <h1 className="text-3xl font-light text-slate-900">Project Detail</h1>
 
       {!loading && !error && (
-        <div className="w-5/6 mx-auto my-4 border shadow-md p-3 grid grid-cols-1 gap-y-2 divide-y divide-gray-200 rounded-md">
+        <div className="w-5/6 max-w-md mx-auto my-4 border shadow-md p-3 grid grid-cols-1 gap-y-2 divide-y divide-gray-200 rounded-md">
           <div className="flex flex-col gay-y-2">
             <h2 className="text-2xl font-bold font-rubik text-stone-800">
               {data.singleProject.name}

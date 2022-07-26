@@ -29,10 +29,10 @@ const ClientRow = ({ client }) => {
   });
 
   return (
-    <div className="w-full p-2 border flex flex-col gap-y-2 justify-center">
-      <p>{client.name}</p>
-      <p>{client.email}</p>
-      <p>{client.phone}</p>
+    <div className="w-full p-4 border flex flex-col gap-y-2 justify-center font-rubik">
+      <p className='text-lg font-bold text-slate-800'>{client.name}</p>
+      <p className="text-base text-blue-600 font-medium">{client.email}</p>
+      <p className='text-sm font-bold text-slate-600'>{client.phone}</p>
       <button
         onClick={deleteClient}
         className="cursor-pointer text-red-600 place-self-end"
