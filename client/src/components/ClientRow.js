@@ -1,6 +1,7 @@
 import { useMutation } from "@apollo/client";
 import { DELETE_CLIENT } from "../mutations/clientMutations";
 import { GET_CLIENTS } from "../queries/clientQueries";
+import { GET_PROJECTS } from "../queries/projectQueries";
 
 const ClientRow = ({ client }) => {
   const [deleteClient] = useMutation(DELETE_CLIENT, {
@@ -11,17 +12,20 @@ const ClientRow = ({ client }) => {
     // refetchQueries: [{ query: GET_CLIENTS }],
 
     // method 2, reads data from the delete mutation and filters it from the list of data
-    update(cache, { data: { deleteClient } }) {
-      const { allClients } = cache.readQuery({ query: GET_CLIENTS });
-      cache.writeQuery({
-        query: GET_CLIENTS,
-        data: {
-          allClients: allClients.filter(
-            (client) => client.id !== deleteClient.id
-          ),
-        },
-      });
-    },
+    // update(cache, { data: { deleteClient } }) {
+    //   const { allClients } = cache.readQuery({ query: GET_CLIENTS });
+    //   cache.writeQuery({
+    //     query: GET_CLIENTS,
+    //     data: {
+    //       allClients: allClients.filter(
+    //         (client) => client.id !== deleteClient.id
+    //       ),
+    //     },
+    //   });
+    // },
+    
+    // method 3: using refetchQueries for both clients and projects since we're now cascading deletes
+    refetchQueries: [{ query: GET_CLIENTS }, { query: GET_PROJECTS }],
   });
 
   return (

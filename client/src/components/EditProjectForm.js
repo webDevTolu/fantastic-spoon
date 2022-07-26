@@ -86,7 +86,7 @@ const EditProjectForm = ({ project }) => {
             className="bg-blue-800 hover:bg-blue-900 disabled:bg-gray-400 disabled:cursor-not-allowed text-white font-bold capitalize text-lg flex items-center justify-center h-12 w-full"
             disabled={disable}
           >
-            add client
+            edit project
           </button>
         </div>
       </form>

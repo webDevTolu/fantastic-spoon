@@ -44,7 +44,6 @@ const AddProjectForm = () => {
     event.preventDefault();
 
     // sends data to server
-    console.log({ name, description, clientId, status });
     addProject(name, description, clientId, status);
 
     // clear form after submit
