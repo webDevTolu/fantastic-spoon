@@ -17,7 +17,7 @@ const DeleteProjectBtn = ({ projectId }) => {
   };
 
   return (
-    <div className="text-red-900 cursor-pointer" onClick={onDeleteProject}>
+    <div className="text-red-700 cursor-pointer" onClick={onDeleteProject}>
       <svg
         className="h-6 w-6"
         fill="none"

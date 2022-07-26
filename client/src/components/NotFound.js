@@ -5,7 +5,7 @@ const NotFound = () => {
     <div className="w-full h-[80vh]  flex items-center justify-center font-rubik">
       <div className="w-5/6 mx-auto flex items-start gap-x-4 ">
         <h3 className="text-5xl text-indigo-600 font-bold ">404</h3>
-        <div className="border-l p-1 pl-2 border-gray-600 flex flex-col gap-y-2">
+        <div className="border-l-2 p-1 pl-2 border-gray-300 flex flex-col gap-y-2">
           <h1 className="text-3xl text-slate-800 font-bold">Page not found</h1>
           <p className="text-sm text-slate-400 font-normal">
             Please check the URL in the address bar and try again.
