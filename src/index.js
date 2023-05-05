@@ -27,7 +27,7 @@ const cache = new InMemoryCache({
 });
 
 const client = new ApolloClient({
-  uri: "https://learning-graphql-api.herokuapp.com/api/",
+  uri: "https://simple-graphql-fe7r.onrender.com/api/",
   cache,
 });
 
